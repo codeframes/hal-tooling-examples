@@ -1,11 +1,11 @@
 # hal-tooling-example
 
 An example project demonstrating the use of hal-tooling modules:
- * [hal-tooling-core](https://github.com/codeframes/hal-tooling-core)
- * [hal-tooling-json](https://github.com/codeframes/hal-tooling-json)
- * [hal-tooling-link-bindings](https://github.com/codeframes/hal-tooling-link-bindings)
- * [hal-tooling-link-bindings-jax-rs](https://github.com/codeframes/hal-tooling-link-bindings-jax-rs)
- * [hal-tooling-test](https://github.com/codeframes/hal-tooling-test)
+ * [hal-tooling-core](https://github.com/codeframes/hal-tooling/tree/master/hal-tooling-core)
+ * [hal-tooling-json](https://github.com/codeframes/hal-tooling/tree/master/hal-tooling-json)
+ * [hal-tooling-link-bindings](https://github.com/codeframes/hal-tooling/tree/master/hal-tooling-link-bindings)
+ * [hal-tooling-link-bindings-jax-rs](https://github.com/codeframes/hal-tooling/tree/master/hal-tooling-link-bindings-jax-rs)
+ * [hal-tooling-test](https://github.com/codeframes/hal-tooling/tree/master/hal-tooling-test)
 
 ## Prerequisites
 
