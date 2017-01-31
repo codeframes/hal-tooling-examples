@@ -24,7 +24,7 @@
     <groupId>com.github.codeframes</groupId>
     <artifactId>hal-tooling-examples</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.2.0-alpha-1</version>
 
     <name>HAL Tooling Examples</name>
     <description>Parent pom for HAL Tooling Example projects.</description>
@@ -69,6 +69,7 @@
 
     <modules>
         <module>hal-tooling-example</module>
+        <module>hal-tooling-api-doc-example</module>
     </modules>
 
     <properties>
@@ -76,6 +77,10 @@
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- Core Dependencies -->
+        <spring.boot.version>1.4.0.RELEASE</spring.boot.version>
+        <spring.version>4.3.2.RELEASE</spring.version>
 
         <!-- Test Dependency Versioning -->
         <groovy-all.version>2.4.5</groovy-all.version>
@@ -95,6 +100,13 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.google.code.findbugs</groupId>
+                <artifactId>jsr305</artifactId>
+                <version>3.0.1</version>
+                <scope>provided</scope>
+            </dependency>
+
             <!-- Test Dependencies -->
             <dependency>
                 <groupId>org.codehaus.groovy</groupId>

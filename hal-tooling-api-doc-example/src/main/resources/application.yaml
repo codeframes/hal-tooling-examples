@@ -1,0 +1,6 @@
+server:
+  contextPath: /hal-tooling-api-doc-example
+  port: 8080
+spring:
+  jersey:
+    type: filter

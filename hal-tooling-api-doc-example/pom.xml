@@ -22,14 +22,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.github.codeframes</groupId>
         <artifactId>hal-tooling-examples</artifactId>
+        <groupId>com.github.codeframes</groupId>
         <version>1.2.0-alpha-1</version>
     </parent>
 
-    <artifactId>hal-tooling-example</artifactId>
+    <artifactId>hal-tooling-api-doc-example</artifactId>
 
-    <name>HAL Tooling Example</name>
+    <name>HAL Tooling API Doc Example</name>
     <description>
         An example project demonstrating the use of hal-tooling modules:
         * hal-tooling-core
@@ -56,9 +56,36 @@
         </dependency>
 
         <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jersey</artifactId>
             <version>${spring.boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-joda</artifactId>
+            <version>2.6.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>hal-browser</artifactId>
+            <version>3325375</version>
         </dependency>
 
         <!-- Test Dependencies -->
@@ -68,12 +95,17 @@
             <version>${hal-tooling.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.codeframes</groupId>
+            <artifactId>hal-tooling-api-doc-maven-plugin-api</artifactId>
+            <version>${hal-tooling.version}</version>
+            <scope>test</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.spockframework</groupId>
             <artifactId>spock-core</artifactId>
@@ -143,6 +175,55 @@
                         <phase>post-integration-test</phase>
                         <goals>
                             <goal>stop</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <phase>package-api-docs</phase>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>com.github.codeframes</groupId>
+                <artifactId>hal-tooling-api-doc-maven-plugin</artifactId>
+                <version>${hal-tooling.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <apiRootRel>root</apiRootRel>
+                    <contextPath>/hal-tooling-api-doc-example</contextPath>
+                    <relsOverridesDirectory>${project.basedir}/rels-overrides</relsOverridesDirectory>
+                    <additionalSources>
+                        <additionalSource>
+                            <groupId>com.github.codeframes</groupId>
+                            <artifactId>hal-tooling-json</artifactId>
+                        </additionalSource>
+                    </additionalSources>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>generate-api-docs</phase>
+                        <goals>
+                            <goal>generate-api-docs</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>com.github.codeframes</groupId>
+                <artifactId>hal-tooling-api-doc-html-maven-plugin</artifactId>
+                <version>${hal-tooling.version}</version>
+                <configuration>
+                    <packaging>webjar</packaging>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>post-generate-api-docs</phase>
+                        <goals>
+                            <goal>api-doc-html</goal>
                         </goals>
                     </execution>
                 </executions>
